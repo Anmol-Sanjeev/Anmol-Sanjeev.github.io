@@ -3,22 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Operations</title>
+    <title>All Operations with Functions</title>
     <script>
-        function calculateAll(){
+        function add(a, b) {
+            return a + b;
+        }
+
+        function subtract(a, b) {
+            return a - b;
+        }
+
+        function multiply(a, b) {
+            return a * b;
+        }
+
+        function divide(a, b) {
+            if (b === 0) {
+                return "Undefined (division by zero)";
+            }
+            return a / b;
+        }
+
+        function calculateAll() {
             let a = Number(t1.value);
             let b = Number(t2.value);
 
-            let sum = a + b;
-            let difference = a - b;
-            let product = a * b;
-            let quotient = b !== 0 ? (a / b) : "Undefined (division by zero)";
+            let result = "";
+            result += "<p>" + a + " + " + b + " = " + add(a, b) + "</p>";
+            result += "<p>" + a + " - " + b + " = " + subtract(a, b) + "</p>";
+            result += "<p>" + a + " × " + b + " = " + multiply(a, b) + "</p>";
+            result += "<p>" + a + " ÷ " + b + " = " + divide(a, b) + "</p>";
 
-            document.getElementById("result").innerHTML =
-                "<p>" + a + " + " + b + " = " + sum + "</p>" +
-                "<p>" + a + " - " + b + " = " + difference + "</p>" +
-                "<p>" + a + " × " + b + " = " + product + "</p>" +
-                "<p>" + a + " ÷ " + b + " = " + quotient + "</p>";
+            document.getElementById("result").innerHTML = result;
         }
     </script>
 </head>
