@@ -1,17 +1,28 @@
 const fruits = [];
 
-function addFruit() {
-    const input = document.getElementById("fruitInput");
-    const fruitName = input.value.trim();
+const showFruitApp = () => {
+  let fruitList = fruits.map(fruit => `<li>${fruit}</li>`).join("");
 
-    if (fruitName !== "") {
-        fruits.push(fruitName);
+  const html = `
+    <h1>Fruit List</h1>
+    <div class="input-row">
+      <input type="text" id="fruitInput" placeholder="Enter a fruit name" />
+      <button onclick="addFruit()">Add</button>
+    </div>
+    <ul>${fruitList}</ul>
+  `;
 
-        const list = document.getElementById("fruitList");
-        const newItem = document.createElement("li");
-        newItem.textContent = fruitName;
-        list.appendChild(newItem);
+  document.getElementById("root").innerHTML = html;
+};
 
-        input.value = "";
-    }
-}
+const addFruit = () => {
+  const input = document.getElementById("fruitInput");
+  const fruit = input.value.trim();
+
+  if (fruit !== "") {
+    fruits.push(fruit);
+    showFruitApp(); // Re-render the UI with updated list
+  }
+};
+
+showFruitApp(); // Initial render
